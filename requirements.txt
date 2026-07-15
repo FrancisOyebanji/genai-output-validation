@@ -1,0 +1,4 @@
+# Core suite: Python 3.10+ standard library only (sqlite3, dataclasses, hashlib)
+pytest>=7.0          # unit tests
+# Optional — only for testing live Claude models:
+# anthropic>=0.40
