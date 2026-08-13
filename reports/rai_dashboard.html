@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Responsible AI Assurance</title>
+<style>
+ body{font-family:'Segoe UI',system-ui,sans-serif;background:#f6f7fb;color:#1c2333;margin:0}
+ header{background:#3b0a45;color:#fff;padding:16px 30px} h1{font-size:20px;margin:0}
+ .sub{color:#e0c8ea;font-size:13px}
+ main{max-width:1050px;margin:22px auto;padding:0 18px}
+ .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px}
+ .kpi{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px}
+ .kpi .l{color:#6b7280;font-size:13px}.kpi .v{font-size:22px;font-weight:700;margin-top:4px}
+ .kpi.high .v{color:#b42318}.kpi.bad .v{color:#b42318}.kpi.ok .v{color:#14804a}
+ .panel{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;margin-bottom:18px}
+ .panel h2{font-size:15px;margin:0 0 12px}
+ table{width:100%;border-collapse:collapse;font-size:13px}
+ th,td{text-align:left;padding:7px 9px;border-bottom:1px solid #eef0f4}
+ th{background:#3b0a45;color:#fff;font-size:11px;text-transform:uppercase}
+ td.ok{color:#14804a;font-weight:600} td.bad{color:#b42318;font-weight:600} td.na{color:#9aa3b2}
+ .pill{display:inline-block;background:#efeafc;color:#5b3db8;border-radius:999px;padding:2px 10px;font-size:12px;margin-right:6px}
+ footer{color:#6b7280;font-size:12px;text-align:center;margin:24px 0}
+</style></head><body>
+<header><h1>Responsible AI Assurance — GenAI credit-decision assistant</h1>
+<div class="sub">AI inventory · risk tiering · RAI evaluation · control assurance (NIST AI RMF · ISO 42001 · EU AI Act)</div></header>
+<main>
+<div class="kpis">
+ <div class="kpi high"><div class="l">Risk tier</div><div class="v">HIGH</div></div>
+ <div class="kpi"><div class="l">Risk score</div><div class="v">88.0</div></div>
+ <div class="kpi bad"><div class="l">Assurance</div><div class="v">85.7%</div></div>
+ <div class="kpi bad"><div class="l">Decision</div><div class="v">REMEDIATION REQUIRED</div></div>
+</div>
+<div class="panel"><h2>AI inventory (3 systems)</h2><span class='pill'>high: 2</span><span class='pill'>minimal: 1</span></div>
+<div class="panel"><h2>Responsible AI evaluation results</h2>
+ <table><tr><th>Dimension</th><th>Value</th><th>Status</th></tr>
+ <tr><td>Fairness — disparate impact</td><td>0.8941</td><td class='ok'>PASS</td></tr>
+ <tr><td>Fairness — demographic parity diff</td><td>0.0509</td><td class='ok'>PASS</td></tr>
+ <tr><td>Safety — groundedness</td><td>0.9677</td><td class='ok'>PASS</td></tr>
+ <tr><td>Safety — toxicity</td><td>0.0</td><td class='ok'>PASS</td></tr>
+ <tr><td>Privacy — PII leakage</td><td>0.0</td><td class='ok'>PASS</td></tr>
+ <tr><td>Oversight — refusal accuracy</td><td>0.8889</td><td class='bad'>FAIL</td></tr>
+ </table></div>
+<div class="panel"><h2>Control assurance — framework mapping</h2>
+ <table><tr><th>ID</th><th>Control</th><th>NIST AI RMF</th><th>EU AI Act</th><th>Status</th></tr>
+ <tr><td>RAI-01</td><td>Non-discrimination / fairness</td><td>MEASURE 2.11</td><td>Art.10 (data governance)</td><td class='ok'>Met</td></tr>
+<tr><td>RAI-02</td><td>Output groundedness / no hallucination</td><td>MEASURE 2.3</td><td>Art.15 (accuracy)</td><td class='ok'>Met</td></tr>
+<tr><td>RAI-03</td><td>Toxicity / harmful content prevention</td><td>MANAGE 2.2</td><td>Art.15 (robustness)</td><td class='ok'>Met</td></tr>
+<tr><td>RAI-04</td><td>PII protection / privacy</td><td>MAP 4.1</td><td>Art.10 (data) / GDPR</td><td class='ok'>Met</td></tr>
+<tr><td>RAI-05</td><td>Appropriate refusal / human oversight</td><td>GOVERN 3.2</td><td>Art.14 (human oversight)</td><td class='bad'>Not Met</td></tr>
+<tr><td>RAI-06</td><td>Risk classification & tiering</td><td>MAP 1.5</td><td>Art.6 (risk classification)</td><td class='ok'>Met</td></tr>
+<tr><td>RAI-07</td><td>Model documentation / transparency</td><td>GOVERN 1.4</td><td>Art.13 (transparency)</td><td class='ok'>Met</td></tr></table></div>
+</main>
+<footer>Synthetic assessment · illustrative framework references, not legal advice · src/governance/build_dashboard.py</footer>
+</body></html>

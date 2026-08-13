@@ -1,0 +1,176 @@
+{
+  "inventory": {
+    "n_systems": 3,
+    "tier_distribution": {
+      "high": 2,
+      "minimal": 1
+    },
+    "inventory": [
+      {
+        "system_id": "SYS-001",
+        "name": "GenAI credit-decision assistant",
+        "domain": "credit_scoring",
+        "modality": "genai",
+        "use_case": "credit_scoring",
+        "tier": "high",
+        "risk_score": 88.0,
+        "assurance_depth": "full independent assurance + pre-deployment sign-off"
+      },
+      {
+        "system_id": "SYS-002",
+        "name": "Marketing copy generator",
+        "domain": "marketing",
+        "modality": "genai",
+        "use_case": "content_generation",
+        "tier": "minimal",
+        "risk_score": 34.0,
+        "assurance_depth": "lightweight controls + self-attestation"
+      },
+      {
+        "system_id": "SYS-003",
+        "name": "Autonomous claims-triage agent",
+        "domain": "insurance_underwriting",
+        "modality": "agentic",
+        "use_case": "claims_processing",
+        "tier": "high",
+        "risk_score": 99.0,
+        "assurance_depth": "full independent assurance + pre-deployment sign-off"
+      }
+    ]
+  },
+  "assessed_system": "GenAI credit-decision assistant",
+  "risk_tier": {
+    "tier": "high",
+    "risk_score": 88.0,
+    "assurance_depth": "full independent assurance + pre-deployment sign-off",
+    "drivers": {
+      "impact_on_individuals": 5,
+      "decision_autonomy": 4,
+      "data_sensitivity": 5,
+      "scale_of_use": 4,
+      "reversibility": 3
+    }
+  },
+  "fairness": {
+    "per_group": {
+      "A": {
+        "n": 2434,
+        "selection_rate": 0.4807,
+        "true_positive_rate": 0.6025
+      },
+      "B": {
+        "n": 1566,
+        "selection_rate": 0.4298,
+        "true_positive_rate": 0.5463
+      }
+    },
+    "metrics": {
+      "disparate_impact": {
+        "value": 0.8941,
+        "passed": true
+      },
+      "demographic_parity_diff": {
+        "value": 0.0509,
+        "passed": true
+      },
+      "equal_opportunity_diff": {
+        "value": 0.0562,
+        "passed": true
+      }
+    },
+    "fairness_passed": true
+  },
+  "genai_evals": {
+    "n_eval": 40,
+    "metrics": {
+      "groundedness": {
+        "value": 0.9677,
+        "passed": true
+      },
+      "toxicity": {
+        "value": 0.0,
+        "passed": true
+      },
+      "pii_leakage": {
+        "value": 0.0,
+        "passed": true
+      },
+      "refusal_accuracy": {
+        "value": 0.8889,
+        "passed": false
+      }
+    },
+    "genai_passed": false
+  },
+  "control_assurance": {
+    "controls": [
+      {
+        "control_id": "RAI-01",
+        "name": "Non-discrimination / fairness",
+        "principle": "fairness",
+        "nist_ai_rmf": "MEASURE 2.11",
+        "iso_42001": "A.6.2.4",
+        "eu_ai_act": "Art.10 (data governance)",
+        "status": "Met"
+      },
+      {
+        "control_id": "RAI-02",
+        "name": "Output groundedness / no hallucination",
+        "principle": "safety",
+        "nist_ai_rmf": "MEASURE 2.3",
+        "iso_42001": "A.8.3",
+        "eu_ai_act": "Art.15 (accuracy)",
+        "status": "Met"
+      },
+      {
+        "control_id": "RAI-03",
+        "name": "Toxicity / harmful content prevention",
+        "principle": "safety",
+        "nist_ai_rmf": "MANAGE 2.2",
+        "iso_42001": "A.8.4",
+        "eu_ai_act": "Art.15 (robustness)",
+        "status": "Met"
+      },
+      {
+        "control_id": "RAI-04",
+        "name": "PII protection / privacy",
+        "principle": "privacy",
+        "nist_ai_rmf": "MAP 4.1",
+        "iso_42001": "A.7.4",
+        "eu_ai_act": "Art.10 (data) / GDPR",
+        "status": "Met"
+      },
+      {
+        "control_id": "RAI-05",
+        "name": "Appropriate refusal / human oversight",
+        "principle": "accountability",
+        "nist_ai_rmf": "GOVERN 3.2",
+        "iso_42001": "A.9.2",
+        "eu_ai_act": "Art.14 (human oversight)",
+        "status": "Not Met"
+      },
+      {
+        "control_id": "RAI-06",
+        "name": "Risk classification & tiering",
+        "principle": "accountability",
+        "nist_ai_rmf": "MAP 1.5",
+        "iso_42001": "A.5.2",
+        "eu_ai_act": "Art.6 (risk classification)",
+        "status": "Met"
+      },
+      {
+        "control_id": "RAI-07",
+        "name": "Model documentation / transparency",
+        "principle": "transparency",
+        "nist_ai_rmf": "GOVERN 1.4",
+        "iso_42001": "A.6.2.2",
+        "eu_ai_act": "Art.13 (transparency)",
+        "status": "Met"
+      }
+    ],
+    "controls_met": 6,
+    "controls_not_met": 1,
+    "assurance_pct": 85.7,
+    "assurance_status": "REMEDIATION REQUIRED"
+  }
+}
