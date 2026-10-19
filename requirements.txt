@@ -1,6 +1,8 @@
 # LLM data-handling validation suite: Python 3.10+ standard library (sqlite3, dataclasses, hashlib)
 # Responsible AI governance layer (fairness metrics):
 numpy>=1.24
+# Community Support LLM/ML module (issue classification, uplift personalization):
+scikit-learn>=1.3
 pytest>=7.0          # unit tests
 # Optional — only for testing live Claude models:
 # anthropic>=0.40

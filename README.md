@@ -1,10 +1,32 @@
-# Responsible AI Governance & Assurance Platform
+# LLM/ML Evaluation, Community Support Intelligence & Responsible-AI Assurance
 
-**An end-to-end Responsible AI governance toolkit: an AI system inventory with EU AI Act-style risk tiering, a Responsible-AI evaluation harness (fairness/bias, hallucination/groundedness, toxicity, PII leakage, human-oversight), a control library mapping results to NIST AI RMF / ISO 42001 / EU AI Act, and an automated model card + assurance report — plus the original LLM data-handling validation suite.**
+**LLM/ML for customer support plus Responsible-AI governance: automated LLM evaluation (LLM-as-judge agreement with human labels), synthetic support-dataset curation across CS domains, issue-understanding + failure-mode detection, and personalization — on top of a Responsible-AI evaluation harness (fairness, hallucination, toxicity, PII), risk tiering, and an assurance gate. Python.**
 
-> **In one breath (Responsible AI / governance focus):** Built a Responsible AI governance and assurance platform that maintains an AI inventory with risk classification and tiering (EU AI Act-style, refined by a weighted risk score), runs a Responsible-AI evaluation battery on models and GenAI systems (group-fairness metrics with the four-fifths rule, hallucination/groundedness, toxicity, PII leakage, and refusal/oversight accuracy against acceptance thresholds), maps every result to controls in NIST AI RMF, ISO/IEC 42001, and the EU AI Act, and emits a model card and an assurance decision — an approval gate that blocks a high-risk system from production when a control is unmet.
+> **In one breath (Community Support LLM/ML focus):** Built a Community-Support LLM/ML suite — synthetic support-conversation curation across 8 CS domains with gold labels, an automated LLM evaluator (LLM-as-judge) that agrees with human reviewers almost perfectly on objective failure modes (Cohen's κ 0.99) and honestly less on subjective quality (κ 0.86), an issue-understanding model (macro-F1 0.90) with failure-mode analysis that surfaces the worst-performing domain to prioritize, and a personalization/uplift model that targets the segment priority handling truly helps (1.6× better than random, recovering a known treatment effect) — all graded against ground truth, and sitting on a Responsible-AI governance + assurance layer (fairness, hallucination, toxicity, PII, risk tiering).
 
-## Responsible AI governance (headline for AI-governance / RAI roles)
+## Community Support LLM/ML (headline for the CS Data Science role)
+
+The LLM/ML loop a Community-Support data scientist runs — curate data, automate evaluation, understand issues and failure modes, personalize — on synthetic data with **known ground truth**:
+
+```bash
+pip install -r requirements.txt
+PYTHONPATH=src python -m community_support.run_cs            # dataset -> auto-eval -> issue understanding -> personalization
+PYTHONPATH=src python -m community_support.build_dashboard   # CS dashboard
+PYTHONPATH=src python -m pytest tests/test_community_support.py -q   # 4 tests, graded vs truth
+```
+
+| Capability | Method | Result (graded vs ground truth) |
+|---|---|---|
+| **Synthetic dataset curation** ([generate_cs_data.py](src/community_support/generate_cs_data.py)) | 8 CS domains, gold labels (domain, resolution, policy, failure mode, quality) | 3,000 labeled contacts for training/eval |
+| **Automated LLM evaluation** ([auto_eval.py](src/community_support/auto_eval.py)) | rubric judge vs human gold, accuracy + Cohen's κ | **κ 0.99** failure modes, **κ 0.86** quality (subjective, honestly lower) |
+| **Issue understanding** ([issue_understanding.py](src/community_support/issue_understanding.py)) | TF-IDF + logistic classifier; failure-mode analysis | **macro-F1 0.90**; surfaces worst domain + improvement opportunity |
+| **Personalization** ([personalization.py](src/community_support/personalization.py)) | T-learner uplift on randomized priority-handling flag | targets true-benefit segment **1.6× vs random**, recovers known uplift |
+
+The anchor result is **automated LLM evaluation**: on objective, checkable signals (failure modes, policy compliance) the automated judge matches human reviewers almost perfectly, so it can scale review; on subjective quality it agrees strongly but not perfectly — exactly the honest finding that tells you *where* automated eval can replace human review and where it still needs a human. That maps directly to the JD's "automate the LLM evaluation process," "scale synthetic dataset curation," "identify failure modes," and "personalization" asks.
+
+---
+
+## Responsible AI governance (secondary — AI-governance / RAI roles)
 
 The governance workflow a Responsible AI practitioner runs — from AI inventory through assurance sign-off:
 

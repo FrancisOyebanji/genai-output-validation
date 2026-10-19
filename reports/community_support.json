@@ -1,0 +1,111 @@
+{
+  "dataset": {
+    "n": 3000,
+    "domains": [
+      "booking",
+      "cancellation",
+      "refund",
+      "payments",
+      "reservation_change",
+      "host_guest_dispute",
+      "safety_trust",
+      "account"
+    ]
+  },
+  "auto_eval": {
+    "n": 3000,
+    "failure_mode_accuracy": 0.9953,
+    "failure_mode_kappa": 0.9916,
+    "quality_accuracy": 0.9227,
+    "quality_kappa": 0.8549,
+    "policy_compliance_accuracy": 1.0,
+    "auto_review_coverage": 1.0
+  },
+  "issue_classification": {
+    "n_test": 900,
+    "accuracy": 0.8933,
+    "macro_f1": 0.8982,
+    "n_classes": 8
+  },
+  "failure_mode_analysis": {
+    "by_domain": [
+      {
+        "domain": "safety_trust",
+        "contacts": 367,
+        "failure_rate": 0.398,
+        "top_failure_mode": "unresolved"
+      },
+      {
+        "domain": "reservation_change",
+        "contacts": 369,
+        "failure_rate": 0.379,
+        "top_failure_mode": "wrong_policy"
+      },
+      {
+        "domain": "host_guest_dispute",
+        "contacts": 410,
+        "failure_rate": 0.376,
+        "top_failure_mode": "wrong_policy"
+      },
+      {
+        "domain": "refund",
+        "contacts": 356,
+        "failure_rate": 0.374,
+        "top_failure_mode": "wrong_policy"
+      },
+      {
+        "domain": "account",
+        "contacts": 363,
+        "failure_rate": 0.353,
+        "top_failure_mode": "unresolved"
+      },
+      {
+        "domain": "payments",
+        "contacts": 367,
+        "failure_rate": 0.343,
+        "top_failure_mode": "unresolved"
+      },
+      {
+        "domain": "cancellation",
+        "contacts": 383,
+        "failure_rate": 0.329,
+        "top_failure_mode": "unresolved"
+      },
+      {
+        "domain": "booking",
+        "contacts": 385,
+        "failure_rate": 0.327,
+        "top_failure_mode": "wrong_policy"
+      }
+    ],
+    "top_failure_modes_overall": [
+      [
+        "unresolved",
+        356
+      ],
+      [
+        "wrong_policy",
+        314
+      ],
+      [
+        "hallucinated_policy",
+        204
+      ],
+      [
+        "rude_tone",
+        191
+      ]
+    ],
+    "worst_domain": "safety_trust",
+    "improvement_opportunity": "Highest failure rate is 'safety_trust' at 40% (top mode: unresolved). Prioritize curating training/eval examples and guardrails for this domain."
+  },
+  "personalization": {
+    "n_test": 900,
+    "true_priority_uplift": 0.18,
+    "measured_segment_uplift": 0.1374,
+    "targeting_precision_at_30pct": 0.541,
+    "targeting_lift_vs_random": 1.62,
+    "mean_predicted_uplift_high_benefit": 0.1241,
+    "mean_predicted_uplift_other": -0.0148
+  }
+}
